@@ -38,7 +38,7 @@ final <- lapply(row_indices, function(i){
   pwin2 <- odds_to_pwin(unname(sapply(df[3,2:7], c)))
   # if odds are NA for a team, use 1 - the other team
   if (is.na(pwin1) && !is.na(pwin2)) {pwin1 <- 1 - pwin2}
-  if (is.na(pwin2) && !is.na(pwin1)) {pwin2 <- 1 - pwin2}
+  if (is.na(pwin2) && !is.na(pwin1)) {pwin2 <- 1 - pwin1}
   # normalize the odds to add up to 1
   old_sum <- (pwin1 + pwin2)
   pwin1 <- pwin1 / old_sum

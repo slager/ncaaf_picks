@@ -109,3 +109,13 @@ for (i in seq_len(nrow(df))){
 }
 
 write.csv(df, 'picks.csv', row.names = FALSE)
+
+pick_from_moneylines <- function(m1, m2){
+  pwin1 <- odds_to_pwin(m1)
+  pwin2 <- odds_to_pwin(m2)
+  old_sum <- pwin1 + pwin2
+  pwin1 <- pwin1 / old_sum
+  pwin2 <- pwin2 / old_sum
+  trial <- rbinom(n = 1, size = 1, prob = pwin1)
+  ifelse(trial == 1, 1, 2)
+}
